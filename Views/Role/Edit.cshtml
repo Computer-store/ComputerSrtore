@@ -1,0 +1,71 @@
+﻿@model WeApp1.Models.Helper.REModificated
+@using WeApp1.Models;
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>изменить роль</h2>
+@Html.ValidationSummary()
+@using (Html.BeginForm())
+{
+    <input type="hidden" name="rolename" value="@Model.Role.Name" />
+    <div class="panel panel-primary">
+        <div class="panel-heading">Добавить в роль @Model.Role.Name</div>
+        <table class="table">
+            @if (Model.UnMembers.Count() == 0)
+            {
+                <tr>
+                    <td>Все пользователи в роли</td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td>Id пользователя</td>
+                    <td>Добавить в роль</td>
+                </tr>
+                foreach (WeApp1.Models.Helper.FakeUser u in Model.UnMembers)
+                {
+                    <tr>
+                        <td>@u.Name</td>
+                        <td>
+                            <input type="checkbox" name="IdsToAdd" value="@u.Id" />
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">Удалить из роли @Model.Role.Name</div>
+        <table class="table">
+            @if (Model.Members.Count() == 0)
+            {
+                <tr>
+                    <td>Нет пользователей в роли</td>
+                </tr>
+
+            }
+            else
+            {
+                <tr>
+                    <td>Id</td>
+                    <td>Удалить из роли</td>
+                </tr>
+                foreach (WeApp1.Models.Helper.FakeUser user in Model.Members)
+                {
+                    <tr>
+                        <td>
+                            @user.Name
+                        </td>
+                        <td>
+                            <input type="checkbox" name="IdsToDelete" value="@user.Id" />
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+        @Html.ActionLink("Отмена", "Index", null, new { @class = "btn btn-default" })
+    </div>
+}

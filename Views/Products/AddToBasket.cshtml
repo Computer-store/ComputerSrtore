@@ -1,0 +1,87 @@
+﻿@model ComputerStoreClassLib.Model.Product
+
+@{
+    ViewBag.Title = "AddToBasket";
+}
+
+<h2>AddToBasket</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Product</h4>
+    <hr />
+    @Html.HiddenFor(m=>m.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.LabelFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Фирма поставщик</label>
+
+        <div class="col-md-10">
+            <label class="form-control">@Model.SupplerCompany.Name</label>
+      
+        
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Категория товара</label>
+        <div class="col-md-10">
+            <label class="form-control">@Model.Category.Name</label>
+            @Html.LabelFor(model => model.Category.Name, new { htmlAttributes = new { @class = "form-control" } })
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Операционная система</label>
+        <div class="col-md-10">
+           <label class="form-control">@Model.OperationSystem.Name</label>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <label class="form-control">@Model.Price</label>
+        </div>
+    </div>
+
+    
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.AmmountProducts, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.AmmountProducts, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.AmmountProducts, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Add to basket" class="btn btn-default" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="reset" value="Return" class="btn btn-danger" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "GerAllProducrts")
+</div>

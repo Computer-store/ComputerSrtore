@@ -1,0 +1,47 @@
+﻿@model WeApp1.Models.Report
+@{
+    ViewBag.Title = "Contact";
+}
+<h2>@ViewBag.Title</h2>
+<style>
+    #t1 {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        text-align: center;
+    }
+
+    #tinf {
+        width: 60%;
+        text-align: center;
+        display: block;
+    }
+</style>
+<div class="jumbotron">
+    <h3 style="text-align: center">Ниже привожится форма, которая позволит связаться в владельцем сайта</h3>
+
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+           @Html.TextBoxFor(t=>t.UserName, new { @class="form-control"})
+
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(t=>t.Email, new { @class = "form-control"})
+        </div>
+        <div class="form-group">
+            @Html.DropDownList("Reasons", ViewBag.Reasons as SelectList, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-success" value="send" />
+        </div>
+    }
+
+    <h1 id="t1">Контактная информация</h1>
+    <p>&nbsp;Адрес нашего главного офиса представлен ниже: </p>
+    <div class=" alert alert-info">
+        <address>
+            <strong>Поддержка:</strong>   <a href="mailto:mstr.calling@gmail.com">support@example.com</a><br />
+            <strong>Marketing:</strong> <a href="mailto:mstr.calling@gmail.com">marketg@example.com</a>
+        </address>
+    </div>
+</div>

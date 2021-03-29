@@ -87,6 +87,12 @@ namespace WeApp1.Controllers
             }
            
         }
-    
+        [HttpPost]
+        [Authorize]
+        public async Task<ActionResult> Delete(string id)
+        {
+            await conext.DeleteOrderFroBasket(id);
+            return RedirectToAction("GetAllProducts", "Products");
+        }
     }
 }

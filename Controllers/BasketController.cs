@@ -16,6 +16,7 @@ namespace WeApp1.Controllers
         private ComputerStoreClassLib.Model.Context.OperationSystems conos = new ComputerStoreClassLib.Model.Context.OperationSystems();
         private ComputerStoreClassLib.Model.Context.Categories concateg = new ComputerStoreClassLib.Model.Context.Categories();
         private ComputerStoreClassLib.Model.Context.SupplerCompanies sk = new ComputerStoreClassLib.Model.Context.SupplerCompanies();
+        private ComputerStoreClassLib.Model.Context.Products prod = new ComputerStoreClassLib.Model.Context.Products();
         private static UserManager<ApplicationUser> UserManager
         {
             get
@@ -60,6 +61,7 @@ namespace WeApp1.Controllers
                 {
                     var y = await UserManager.FindByIdAsync(userid);
                     t.User = new User { Id = y.Id, Address = y.Address, UserName = y.UserName, PhoneNumber = y.PhoneNumber };
+                    t.Product = await prod.GetProductById(t.ProductId);
                 }
                 return View(pr);
             }
@@ -87,7 +89,7 @@ namespace WeApp1.Controllers
             }
            
         }
-        [HttpPost]
+       
         [Authorize]
         public async Task<ActionResult> Delete(string id)
         {

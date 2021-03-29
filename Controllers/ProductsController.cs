@@ -33,6 +33,21 @@ namespace WeApp1.Controllers
             }
 
         }
+      
+
+        public ActionResult ProductSearch(string name = null)
+        {
+            var items = context.GetAllProductSync();
+            foreach (var item in items)
+            {
+                item.SupplerCompany = c2.GetSupplerCompanyByIdSync(item.SupplerCompanyId);
+                item.Category = c1.GetCategoryByIdSync(item.CategoryId);
+                item.OperationSystem = c4.GetOperationSystemByIdSync(item.OperationSystemId);
+            }
+            return View("ProductSearch", name == null ? items: items.Where(t => t.Name == name).ToList());
+
+        }
+  
 
         private RoleManager<ApplicationRole> RoleManager
         {
@@ -50,14 +65,18 @@ namespace WeApp1.Controllers
         }
         // GET: Products
         [Authorize(Roles = "Admiinstrator, Director")]
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            
-            var item = await context.GetAllProducts();
-            
-            return View(item);
-        }
 
+           return View();
+          
+        }
+        [HttpPost]
+        public ActionResult Index(string name)
+        {
+            ViewBag.Filter = name;
+            return View();
+        }
        [AllowAnonymous]
         public async Task<ActionResult> UserDetails(string id)
         {

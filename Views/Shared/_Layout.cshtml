@@ -27,26 +27,26 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">User int<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            
-                            <li>@Html.ActionLink("Контактная информация","Contact","Home")</li>
-                            <li>@Html.ActionLink("Каталог товаров","GetAllProducts","Products")</li>
-                            <li>@Html.ActionLink("Корзина","Index","Basket")</li>
-                            <li>@Html.ActionLink("Оформление заказа","Check","Orders")</li>
+
+                            <li>@Html.ActionLink("Контактная информация", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("Каталог товаров", "GetAllProducts", "Products")</li>
+                            <li>@Html.ActionLink("Корзина", "Index", "Basket")</li>
+                            <li>@Html.ActionLink("Оформление заказа", "Check", "Orders")</li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Root int<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Категории товаров","Index","Categories")</li>
-                            <li>@Html.ActionLink("Фирмы поставщики","Index","SupplerCompanies")</li>
-                            <li>@Html.ActionLink("Операционные системы","Index","OperationSystems")</li>
-                            <li>@Html.ActionLink("Способы доставки","Index","DeliveryMethods")</li>
-                            <li>@Html.ActionLink("Способы оплаты","Index","PayMethods")</li>
-                            <li>@Html.ActionLink("Состояния заказа","Index","OrderStates")</li>
-                            <li>@Html.ActionLink("Товары","Index","Products")</li>
-                            <li>@Html.ActionLink("Пользователи","Index","Users")</li>
-                            <li>@Html.ActionLink("Роли","Index","Role")</li>
-                            <li>@Html.ActionLink("Заказы","Index","Orders")</li>
+                            <li>@Html.ActionLink("Категории товаров", "Index", "Categories")</li>
+                            <li>@Html.ActionLink("Фирмы поставщики", "Index", "SupplerCompanies")</li>
+                            <li>@Html.ActionLink("Операционные системы", "Index", "OperationSystems")</li>
+                            <li>@Html.ActionLink("Способы доставки", "Index", "DeliveryMethods")</li>
+                            <li>@Html.ActionLink("Способы оплаты", "Index", "PayMethods")</li>
+                            <li>@Html.ActionLink("Состояния заказа", "Index", "OrderStates")</li>
+                            <li>@Html.ActionLink("Товары", "Index", "Products")</li>
+                            <li>@Html.ActionLink("Пользователи", "Index", "Users")</li>
+                            <li>@Html.ActionLink("Роли", "Index", "Role")</li>
+                            <li>@Html.ActionLink("Заказы", "Index", "Orders")</li>
                         </ul>
                     </li>
                     @Html.Partial("PrCount")
@@ -66,6 +66,8 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/scripts/jquery-1.10.2.min.js")
+    @Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
